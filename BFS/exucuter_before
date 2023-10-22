@@ -1,0 +1,85 @@
+//pour n=3
+/*	int ii,ij,ik,oi,oj,ok,comp,pos=0;
+	ArrayList<noeud> Fil = new ArrayList<noeud>();
+	Iterator<noeud> it = Fil.iterator();
+	Scanner n = new Scanner(System.in);
+	//input
+	System.out.println("input?");
+	System.out.println("premier element : ");
+	ii=n.nextInt();
+	System.out.println("deusieme element : ");
+	ij=n.nextInt();
+	System.out.println("troisieme element : ");
+	ik=n.nextInt();
+	//output
+noeud in_noeud= new noeud(ii,ij,ik);
+System.out.println("output?");
+System.out.println("premier element : ");
+oi=n.nextInt();
+System.out.println("deusieme element : ");
+oj=n.nextInt();
+System.out.println("troisieme element : ");
+ok=n.nextInt();
+noeud out_noeud= new noeud(oi,oj,ok);
+//traitement
+Fil.add(in_noeud);
+while(pos<=(Fil.size()-1)) {
+	if(Fil.get(pos).compare(out_noeud)==true) {
+		System.out.println("true ");
+		for(noeud q=Fil.get(pos);q!=null;q=q.prev) {
+			System.out.println(q.p+","+q.d+","+q.t);
+		}
+		pos=Fil.size();
+	}else {
+		Fil.get(pos).p_d(Fil);
+		Fil.get(pos).p_t(Fil);
+		Fil.get(pos).t_d(Fil);
+	}
+		
+	pos++;
+}
+
+
+	//n  appartient a N*
+	int en,comp,pos=0;
+	ArrayList<noeud> Fil = new ArrayList<noeud>();
+	Iterator<noeud> it = Fil.iterator();
+	Scanner n = new Scanner(System.in);
+	//input
+	System.out.println("nombre des entres ?");
+	en = n.nextInt();
+	noeud in_noeud= new noeud(en);
+	
+	System.out.println("input?");
+	for(int i=0;i<en;i++) {
+	
+	System.out.println((i+1)+"element : ");
+in_noeud.E[i]=n.nextInt();}
+	//output
+
+System.out.println("output?");
+noeud out_noeud= new noeud(en);
+for(int i=0;i<en;i++) {
+
+System.out.println((i+1)+"element : ");
+out_noeud.E[i]=n.nextInt();}
+//traitement
+Fil.add(in_noeud);
+while(pos<=(Fil.size()-1)) {
+	if(Fil.get(pos).compare(out_noeud)==true) {
+		System.out.println("true ");
+		for(noeud q=Fil.get(pos);q!=null;q=q.prev) {
+			q.afficher();
+		}
+		System.out.println("null");
+		pos=Fil.size();
+	}else {
+		Fil.get(pos).actions(Fil);
+		
+	}
+		
+	pos++;
+}
+}
+	
+}*/

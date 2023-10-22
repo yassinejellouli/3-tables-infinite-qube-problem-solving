@@ -1,0 +1,270 @@
+package largeur;
+
+import java.util.ArrayList;
+//pour n=3
+/*public class noeud {
+ noeud prev;
+ int p;
+ int d;
+ int t;
+ public noeud(int p,int d,int t) {
+	 this.d=d;
+	 this.p=p;
+	 this.t=t;
+	 prev=null;
+ }
+ public void  p_d(ArrayList<noeud> L) {
+	 noeud s = new noeud(d,p,t);
+	 s.prev=this;
+	 L.add(s);
+ }
+ public void  p_t(ArrayList<noeud> L) {
+	 noeud s = new noeud(t,d,p);
+	 s.prev=this;
+	 L.add(s);
+ }
+
+ public void  t_d(ArrayList<noeud> L) {
+	 noeud s = new noeud(p,t,d);
+	 s.prev=this;
+	 L.add(s);
+ }
+public boolean compare(noeud n) {
+	return (this.p==n.p)&&(this.d==n.d)&&(this.t==n.t);
+}
+}*/
+//pour n  appartient a N*
+/*public class noeud {
+	 noeud prev;
+	 int[] E;
+	
+	public noeud(int taille) {
+		E=new int[taille];
+		prev=null;
+	}
+	public void actions(ArrayList<noeud> L) {
+		int p;
+		 noeud s;
+		for(int i=0;i<E.length-1;i++) {
+			for(int j=i+1;j<E.length;j++) {
+				 s = new noeud(E.length);
+				 this.copy(s);
+				 p=s.E[i];
+				 s.E[i]=s.E[j];
+				 s.E[j]=p;
+				
+				 s.prev=this;
+				 L.add(s);
+			
+			}
+		}
+	}
+	
+	public boolean compare(noeud n) {
+	for(int i=0;i<this.E.length;i++) {
+		if(n.E[i]!=this.E[i]) return false;
+	}
+		return true;
+	}
+	
+	public void afficher() {
+		String s="";
+		for(int i=0;i<this.E.length;i++) {
+			s=s+this.E[i];
+			
+		}
+		System.out.println(s);
+		System.out.println("  ^");
+		System.out.println("  |");
+		System.out.println("  |");
+	}
+	public void copy(noeud n) {
+		for(int i=0;i<this.E.length;i++) {
+			n.E[i]=this.E[i];
+		}
+	}
+	}*/
+public class noeud {
+	 noeud prev;
+	 ArrayList<Integer> tabl1;
+	 ArrayList<Integer> tabl2;
+	 ArrayList<Integer> tabl3;
+	
+	public noeud() {
+		tabl1=new ArrayList<Integer>();
+		tabl2=new ArrayList<Integer>();
+		tabl3=new ArrayList<Integer>();
+		prev=null;
+	}
+	public void actions(ArrayList<noeud> L) {
+	
+		
+		 noeud s1,s2,s3,s4,s5,s6;
+		 //tab1
+		 
+		
+		for(int i=0;i<tabl1.size();i++) {
+			 s1=new noeud();
+			 this.copy(s1);
+			if((s1.tabl1.get(i)!=0)&&(s1.tabl2.contains(tabl1.get(i)))==false) {
+				s1.tabl2.add(s1.tabl1.get(i));
+				s1.tabl1.remove(i);
+				 s1.prev=this;
+				L.add(s1);
+				
+			}
+		}
+		 
+
+		for(int i=0;i<tabl1.size();i++) {
+			 s1=new noeud();
+			 this.copy(s1);
+			if((s1.tabl1.get(i)!=0)&&(s1.tabl3.contains(tabl1.get(i)))==false) {
+				s1.tabl3.add(s1.tabl1.get(i));
+				s1.tabl1.remove(i);
+				 s1.prev=this;
+				L.add(s1);
+				
+			}
+		}
+			
+		//tab2
+		
+	
+
+		for(int i=0;i<tabl2.size();i++) {
+			 s1=new noeud();
+			 this.copy(s1);
+			if((s1.tabl2.get(i)!=0)&&(s1.tabl1.contains(tabl2.get(i)))==false) {
+				s1.tabl1.add(s1.tabl2.get(i));
+				s1.tabl2.remove(i);
+				 s1.prev=this;
+				L.add(s1);
+				
+			}
+		}
+				
+		 
+			
+	
+		for(int i=0;i<tabl2.size();i++) {
+			 s1=new noeud();
+			 this.copy(s1);
+			if((s1.tabl2.get(i)!=0)&&(s1.tabl3.contains(tabl2.get(i)))==false) {
+				s1.tabl3.add(s1.tabl2.get(i));
+				s1.tabl2.remove(i);
+				 s1.prev=this;
+				L.add(s1);
+				
+			}
+		}
+		
+			//tab3
+		
+			 
+		
+		for(int i=0;i<tabl3.size();i++) {
+			 s1=new noeud();
+			 this.copy(s1);
+			if((s1.tabl3.get(i)!=0)&&(s1.tabl1.contains(tabl3.get(i)))==false) {
+				s1.tabl1.add(s1.tabl3.get(i));
+				s1.tabl3.remove(i);
+				 s1.prev=this;
+				L.add(s1);
+				
+			}
+		}
+		
+	
+		
+		for(int i=0;i<tabl3.size();i++) {
+			 s1=new noeud();
+			 this.copy(s1);
+			if((s1.tabl3.get(i)!=0)&&(s1.tabl2.contains(tabl3.get(i)))==false) {
+				s1.tabl2.add(s1.tabl3.get(i));
+				s1.tabl3.remove(i);
+				 s1.prev=this;
+				L.add(s1);
+				
+			}
+		}
+					
+			
+			
+	}
+	
+	public boolean compare(noeud n) {
+		boolean r =true;
+	for(int i=0;i<this.tabl1.size();i++) {
+		if(n.tabl1.contains(this.tabl1.get(i))==false) {r=false;}
+	}
+	for(int i=0;i<this.tabl2.size();i++) {
+		if(n.tabl2.contains(this.tabl2.get(i))==false) {r=false;}
+	}
+	for(int i=0;i<this.tabl3.size();i++) {
+		if(n.tabl3.contains(this.tabl3.get(i))==false) {r=false;}
+	}
+		return r;
+	}
+	
+	public void afficher() {
+		String s1="table 1 :";
+		String s2="table 2 :";
+		String s3="table 3 :";
+		for(int i=0;i<this.tabl1.size();i++) {
+			s1=s1+this.tabl1.get(i);
+			
+		}
+		for(int i=0;i<this.tabl2.size();i++) {
+			
+			s2=s2+this.tabl2.get(i);
+			
+			
+		}
+		
+		for(int i=0;i<this.tabl3.size();i++) {
+			s3=s3+this.tabl3.get(i);
+			
+		}
+		
+		String s=s1+"|"+s2+"|"+s3;
+		System.out.println(s);
+		System.out.println("  ^");
+		System.out.println("  |");
+		System.out.println("  |");
+	}
+	public void copy(noeud n) {
+		for(int i=0;i<this.tabl1.size();i++) {
+			n.tabl1.add(this.tabl1.get(i));
+			
+		}
+		for(int i=0;i<this.tabl2.size();i++) {
+			
+			n.tabl2.add(this.tabl2.get(i));
+			
+		}
+		for(int i=0;i<this.tabl3.size();i++) {
+			
+			n.tabl3.add(this.tabl3.get(i));
+		}
+	}
+	public boolean conatains(int[] i,int j) {
+		boolean r= false;
+		for(int p=0;p<i.length;p++) {
+			if(i[p]==j) {
+				r=true;
+			}
+		}
+		return r;
+		
+	}
+    public  int conut(int[] tab) {
+    	int i=0;
+    	for(int j=0;j<tab.length;j++) {
+    		 if(tab[j]!=0) {
+    			 i++;
+    		 }
+    	}
+    	if(i==0) {return 1;}
+    return i;}
+}
